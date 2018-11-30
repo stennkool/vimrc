@@ -52,6 +52,8 @@ vim-pug https://github.com/digitaltoad/vim-pug
 vim-yankstack https://github.com/maxbrunsfeld/vim-yankstack
 lightline.vim https://github.com/itchyny/lightline.vim
 netrw.vim https://github.com/vim-scripts/netrw.vim
+fzf https://github.com/junegunn/fzf
+supertab https://github.com/ervandew/supertab
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'
