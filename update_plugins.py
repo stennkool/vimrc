@@ -22,7 +22,6 @@ bufexplorer https://github.com/corntrace/bufexplorer
 ctrlp.vim https://github.com/ctrlpvim/ctrlp.vim
 mayansmoke https://github.com/vim-scripts/mayansmoke
 nerdtree https://github.com/scrooloose/nerdtree
-nginx-vim-syntax https://github.com/evanmiller/nginx-vim-syntax
 open_file_under_cursor.vim https://github.com/amix/open_file_under_cursor.vim
 snipmate-snippets https://github.com/scrooloose/snipmate-snippets
 tlib https://github.com/vim-scripts/tlib
@@ -52,6 +51,7 @@ vim-flake8 https://github.com/nvie/vim-flake8
 vim-pug https://github.com/digitaltoad/vim-pug
 vim-yankstack https://github.com/maxbrunsfeld/vim-yankstack
 lightline.vim https://github.com/itchyny/lightline.vim
+netrw.vim https://github.com/vim-scripts/netrw.vim
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'
@@ -66,23 +66,29 @@ def download_extract_replace(plugin_name, zip_path, temp_dir, source_dir):
     req = requests.get(zip_path)
     open(temp_zip_path, 'wb').write(req.content)
 
-    zip_f = zipfile.ZipFile(temp_zip_path)
-    zip_f.extractall(temp_dir)
-
-    plugin_temp_path = path.join(temp_dir,
-                                 path.join(temp_dir, '%s-master' % plugin_name))
-
-    # Remove the current plugin and replace it with the extracted
-    plugin_dest_path = path.join(source_dir, plugin_name)
-
     try:
-        shutil.rmtree(plugin_dest_path)
-    except OSError:
-        pass
+        zip_f = zipfile.ZipFile(temp_zip_path)
+        zip_f.extractall(temp_dir)
 
-    shutil.move(plugin_temp_path, plugin_dest_path)
+        plugin_temp_path = path.join(temp_dir,
+                                    path.join(temp_dir, '%s-master' % plugin_name))
 
-    print('Updated {0}'.format(plugin_name))
+        # Remove the current plugin and replace it with the extracted
+        plugin_dest_path = path.join(source_dir, plugin_name)
+
+        try:
+            shutil.rmtree(plugin_dest_path)
+        except OSError:
+            pass
+
+        shutil.move(plugin_temp_path, plugin_dest_path)
+
+        print('Updated {0}'.format(plugin_name))
+        
+    except:
+        print('Could not extract plugin {0}'.format(plugin_name))
+
+
 
 
 def update(plugin):
