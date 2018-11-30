@@ -54,6 +54,7 @@ lightline.vim https://github.com/itchyny/lightline.vim
 netrw.vim https://github.com/vim-scripts/netrw.vim
 fzf https://github.com/junegunn/fzf
 supertab https://github.com/ervandew/supertab
+php.vim https://github.com/stanangeloff/php.vim
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'
