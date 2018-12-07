@@ -55,6 +55,8 @@ netrw.vim https://github.com/vim-scripts/netrw.vim
 fzf https://github.com/junegunn/fzf
 supertab https://github.com/ervandew/supertab
 php.vim https://github.com/stanangeloff/php.vim
+neocomplete.vim https://github.com/shougo/neocomplete.vim
+phpcomplete.vim https://github.com/shawncplus/phpcomplete.vim
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'
